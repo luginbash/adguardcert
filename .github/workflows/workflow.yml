@@ -21,7 +21,7 @@ jobs:
 
       - name: build dist
         env:
-          CERT_HASH: "{{ github.event.inputs.cert_hash }}"
+          CERT_HASH: "${{ github.event.inputs.cert_hash }}"
         run: |
           ./dist.sh
           ls -la
