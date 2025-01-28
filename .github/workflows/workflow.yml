@@ -23,6 +23,7 @@ jobs:
         env:
           CERT_HASH: "${{ github.event.inputs.cert_hash }}"
         run: |
+          echo "[INFO] replacing AG_CERT_HASH with ${CERT_HASH}"
           ./dist.sh
           ls -la
 
