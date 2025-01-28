@@ -14,5 +14,5 @@ rm -f ${NAME}-${VERSION}.zip
   cd ./module
   if [[ -z $CERT_HASH ]]; then echo "CERT_HASH is not defined, exiting.."; exit -1; fi
   sed -ne "s/AG_CERT_HASH=.*/AG_CERT_HASH=${CERT_HASH}/"
-  zip ../${NAME}-${VERSION}.zip -r * -x ".*" "*/.*"
+  zip ../${NAME}-${VERSION}-${CERT_HASH}.zip -r * -x ".*" "*/.*"
 )
