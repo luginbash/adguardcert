@@ -8,6 +8,10 @@ on:
       - v*
   pull_request:
   workflow_dispatch:
+    inputs:
+      cert_hash:
+        description: "certificate hash from `openssl rehash` or c_rehash"
+        required: true
 
 jobs:
   build:
@@ -16,7 +20,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: build dist
+        env:
+          CERT_HASH: "${{ github.event.inputs.cert_hash }}"
         run: |
+          echo "[INFO] replacing AG_CERT_HASH with ${CERT_HASH}"
           ./dist.sh
           ls -la
 
