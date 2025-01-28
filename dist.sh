@@ -12,5 +12,7 @@ NAME=$(sed -ne "s/id=\(.*\)/\1/gp" ./module/module.prop)
 rm -f ${NAME}-${VERSION}.zip
 (
   cd ./module
+  echo "[INFO] replacing AG_CERT_HASH to ${CERT_HASH}"
+  sed -ne "s/AG_CERT_HASH=.*/AG_CERT_HASH=${CERT_HASH}/"
   zip ../${NAME}-${VERSION}.zip -r * -x ".*" "*/.*"
 )
