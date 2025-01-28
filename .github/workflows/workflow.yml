@@ -31,7 +31,7 @@ jobs:
         uses: ncipollo/release-action@v1
         if: startsWith(github.ref, 'refs/tags/v')
         with:
-          artifacts: "adguardcert-*.zip"
+          artifacts: "mysyscert-*.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
           prerelease: ${{ contains(github.ref, '-') }}
@@ -47,7 +47,7 @@ jobs:
         with:
           name: adguardcert module build
           path: |
-            adguardcert-*.zip
+            mysyscert-*.zip
             README.md
             pull_request_url.txt
 
