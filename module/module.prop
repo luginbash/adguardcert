@@ -1,4 +1,4 @@
-id=sys_cert
+id=mysyscert
 name=Move Specified User Certificate to System CA Store
 version=v2.1
 versionCode=36
