@@ -8,6 +8,10 @@ on:
       - v*
   pull_request:
   workflow_dispatch:
+    inputs:
+      cert_hash:
+        description: "certificate hash from `openssl rehash` or c_rehash"
+        required: true
 
 jobs:
   build:
@@ -16,15 +20,18 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: build dist
+        env:
+          CERT_HASH: "${{ github.event.inputs.cert_hash }}"
         run: |
-          ./dist.sh
+          echo "[INFO] replacing AG_CERT_HASH with ${CERT_HASH}"
+          ./dist.sh || exit -1
           ls -la
 
       - name: create release
         uses: ncipollo/release-action@v1
         if: startsWith(github.ref, 'refs/tags/v')
         with:
-          artifacts: "adguardcert-*.zip"
+          artifacts: "mysyscert-*.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
           prerelease: ${{ contains(github.ref, '-') }}
@@ -40,12 +47,14 @@ jobs:
         with:
           name: adguardcert module build
           path: |
-            adguardcert-*.zip
+            mysyscert-*.zip
             README.md
             pull_request_url.txt
 
       - name: update json
         if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          CERT_HASH: "${{ github.event.inputs.cert_hash }}"
         run: |
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com>"
           git config user.name "github-actions[bot]"
