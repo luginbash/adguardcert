@@ -1,7 +1,7 @@
-id=adguardcert
-name=AdGuard Certificate
+id=sys_cert
+name=Move Specified User Certificate to System CA Store
 version=v2.1
 versionCode=36
-author=AdGuard
-description=Moves AdGuard's root CA certificate from the user certificate store to the system certificate store.
-updateJson=https://raw.githubusercontent.com/AdguardTeam/adguardcert/master/update.json
+author=AdGuard + luginbash
+description=Moves Users's root CA certificate from the user certificate store to the system certificate store, based on https://github.com/AdguardTeam/adguardcert , minimal changes applied.
+updateJson=https://raw.githubusercontent.com/luginbash/adguardcert/master/update.json
