@@ -1,5 +1,5 @@
 id=mysyscert
-name=Move Specified User Certificate to System CA Store
+name=Move CA_CERT_HASH to System CA Store
 version=v2.1
 versionCode=36
 author=AdGuard + luginbash

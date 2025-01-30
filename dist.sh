@@ -13,6 +13,8 @@ rm -f ${NAME}-${VERSION}.zip
 (
   cd ./module
   if [[ -z $CERT_HASH ]]; then echo "CERT_HASH is not defined, exiting.."; exit -1; fi
-  sed -ne "s/AG_CERT_HASH=.*/AG_CERT_HASH=${CERT_HASH}/"
+  sed -ine "s/AG_CERT_HASH=.*/AG_CERT_HASH=${CERT_HASH}/" module/post-fs-data.sh
+  sed -ine "s/version=.*/version=${VERSION}/" module.prop
+  sed -ine "s/CA_CERT_HASH/${CERT_HASH}/" module.prop
   zip ../${NAME}-${VERSION}-${CERT_HASH}.zip -r * -x ".*" "*/.*"
 )
