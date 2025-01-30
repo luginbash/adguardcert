@@ -1,6 +1,6 @@
 {
-  "version": "v2.1",
+  "version": "v1.0.2",
   "versionCode": 36,
-  "zipUrl": "https://github.com/AdguardTeam/adguardcert/releases/download/v2.1/mysyscert-v2.1-1da3f12d.zip",
-  "changelog": "https://github.com/AdguardTeam/adguardcert/releases/tag/v2.1"
+  "zipUrl": "https://github.com/AdguardTeam/adguardcert/releases/download/v1.0.2/mysyscert-v1.0.2-1da3f12d.zip",
+  "changelog": "https://github.com/AdguardTeam/adguardcert/releases/tag/v1.0.2"
 }
